@@ -1,9 +1,20 @@
 var btnTranslate=document.querySelector("#btn-click");
-console.log(btnTranslate);
+var txtInput=document.querySelector("#txtarea");
 
-function myfunction(){
-    alert("Button clicked");
-    console.log("clicked");
+var serverURL="https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json";
+var txtOutput=document.querySelector("#output");
+
+function getTranslationURL(text)
+{
+    return serverURL+"?"+"text="+text;
 }
 
-btnTranslate.addEventListener("click",myfunction);
+function clickHandler(){
+    fetch(getTranslationURL(txtInput.value)).then(response=>response.json).then(json=>console.log(json));
+}
+
+// fetch(url2).then(response=>response.json()).then(json=>console.log(json))
+// https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json
+
+//btnTranslate.addEventListener("click",clickHandler);
+
